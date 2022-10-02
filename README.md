@@ -4,7 +4,7 @@ Store everything you need securely in your Cloud at Home
 
 ## Project layout
 
-`src/` - React frontend project
+`src/` - React frontend project<br/>
 `public/` - Public React files<br/>
 `server/` - Fastify backend project<br/>
 
