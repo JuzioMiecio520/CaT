@@ -1,0 +1,8 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "CaT - store everything you need securely in your Cloud at Home",
+  "author": "JuzioMiecio520",
+  "license": "ISC",
+  "scripts": {}
+}
