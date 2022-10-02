@@ -25,9 +25,11 @@ import {
   IconTrash,
   IconHome,
 } from "@tabler/icons";
+import { useLocation } from "@tanstack/react-location";
 
 export default function Navbar() {
   const theme = useMantineTheme();
+  const location = useLocation();
   const links: {
     title: string;
     icon: React.ReactNode;
