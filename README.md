@@ -1,12 +1,12 @@
-# CaT
+# CAT
 
 Store everything you need securely in your Cloud at Home
 
 ## Project layout
 
 `src/` - React frontend project
-`public/` - Public React files
-`server/` - Fastify backend project
+`public/` - Public React files<br/>
+`server/` - Fastify backend project<br/>
 
 ## License
 
