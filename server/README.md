@@ -1,10 +1,12 @@
-# CAT (backend server)
+# CAT backend server
 
-This is the folder containing the source code of the backend server. It's running Fastify and has been scaffolded with `fastify-cli`
+The source cod eof the backend server for the CaT project
 
-## Available scripts
+## .env file structure
 
-`yarn build:ts` - build the server
-`yarn start` - start the server
-`yarn test` - run tests using Fastify
-`yarn dev` - start the development server (more logging)
+```ini
+DB_USER=example                   # MongoDB user name
+DB_PASS=1234                      # MongoDB user password
+DB_ADDR=mongodb://localhost:27017 # MongoDB address
+DB_NAME=cat                       # MongoDB database name
+```
