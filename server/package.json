@@ -9,7 +9,7 @@
     "db:generate": "node_modules/prisma/build/index.js generate",
     "db:studio": "node_modules/prisma/build/index.js studio",
     "db:push": "node_modules/prisma/build/index.js db push",
-    "postinstall": "yarn db:generate"
+    "prepare": "yarn db:generate"
   },
   "dependencies": {
     "@prisma/client": "4.4.0",
