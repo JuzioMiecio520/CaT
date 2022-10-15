@@ -1,0 +1,37 @@
+diff --git a/node_modules/pretty-quick/dist/scms/git.js b/node_modules/pretty-quick/dist/scms/git.js
+index a9fa21c..aab6993 100644
+--- a/node_modules/pretty-quick/dist/scms/git.js
++++ b/node_modules/pretty-quick/dist/scms/git.js
+@@ -10,6 +10,7 @@ var _findUp = _interopRequireDefault(require("find-up"));
+ var _execa = _interopRequireDefault(require("execa"));
+ 
+ var _path = require("path");
++var _fs = require("fs");
+ 
+ var fs = _interopRequireWildcard(require("fs"));
+ 
+@@ -27,13 +28,19 @@ const detect = directory => {
+     return directory;
+   }
+ 
+-  const gitDirectory = _findUp.default.sync('.git', {
+-    cwd: directory,
+-    type: 'directory'
+-  });
++  const gitDirectory = _findUp.default.sync((p) => {
++		try {
++			_fs.statSync(`${p}/.git`)
++			return '.';
++		} catch (err) {}
++		return undefined;
++	}, {
++     cwd: directory,
++     type: 'directory'
++   });
+ 
+   if (gitDirectory) {
+-    return (0, _path.dirname)(gitDirectory);
++    return gitDirectory;
+   }
+ 
+   const gitWorktreeFile = _findUp.default.sync('.git', {
