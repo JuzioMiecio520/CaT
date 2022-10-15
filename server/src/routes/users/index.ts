@@ -2,7 +2,6 @@ import bcrypt from "bcrypt";
 import { NextFunction, Request, Response, Router } from "express";
 import z from "zod";
 import checkAuth from "../../middlewares/auth";
-import User from "../../models/User";
 import createError from "../../utils/createError";
 import createResponse from "../../utils/createResponse";
 import { removeProps } from "../../utils/masker";
@@ -30,18 +29,17 @@ router.post(
   ),
   async (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
-    const user = await User.findOne({ username }).exec();
+    const user = await req.prisma.user.findUnique({ where: { username } });
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
-      createError(res, 400, {
+      return createError(res, 400, {
         code: "invalid_credentials",
         message: "Invalid credentials have been provided",
         type: "authentication",
       });
-      return;
     }
 
-    createResponse(res, 200, removeProps(user.toObject(), ["password"]));
+    createResponse(res, 200, removeProps(user, ["password"]));
   }
 );
 

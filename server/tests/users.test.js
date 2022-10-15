@@ -3,15 +3,17 @@ const { BASE_URL } = require("./CONSTS");
 
 const request = supertest(BASE_URL + "/users");
 const USER_ADMIN = {
-  _id: "f1616965-cebe-456c-b116-9c7ef0d594a8",
-  token: "CITQDPVN2hNiCEEnAkK3hiRHZNIdHyWt2jIWUnqPajlOn3HN",
+  id: "user_M1cDRHla0fEsndWW",
+  token: "AFdsIcK9VF0M22D3HmScH3n5Zg4TF43aJVoZtbOwZOJLZFgr",
   username: "admin",
   password: "1234",
-  createdAt: new Date(1665592412572),
+  requirePasswordChange: false,
   permissions: ["*"],
+  createdAt: new Date(1665592412572),
+  updatedAt: new Date(1665592412572),
 };
 const USER_NORMAL = {
-  _id: "55890afd-6ec0-4918-b212-68da21146e96",
+  id: "55890afd-6ec0-4918-b212-68da21146e96",
   token: "ZCqEuCOVlXFkQTNozlbNylrYqxCmm0d0osDnPv4skmXNPSDm",
   username: "user",
   password: "6789",

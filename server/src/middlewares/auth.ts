@@ -1,12 +1,12 @@
+import { User } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
 import minimatch from "minimatch";
-import User, { IUser } from "../models/User";
 import createError from "../utils/createError";
 
 declare global {
   namespace Express {
     interface Request {
-      user?: IUser | null;
+      user?: User | null;
     }
   }
 }
@@ -40,7 +40,7 @@ export default async function checkAuth(
       type: "authentication",
     });
 
-  const user = await User.findOne({ token });
+  const user = await req.prisma.user.findUnique({ where: { token } });
 
   if (!user)
     return createError(res, 401, {
@@ -49,7 +49,7 @@ export default async function checkAuth(
       type: "authentication",
     });
 
-  req.user = user.toObject();
+  req.user = user;
   next();
 }
 
